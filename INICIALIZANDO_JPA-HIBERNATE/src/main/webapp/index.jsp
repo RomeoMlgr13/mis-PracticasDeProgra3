@@ -1,5 +1,10 @@
 <html>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-latest.js">
+    </script>
+
+    
+
 <body>
 <h2>Hello World!</h2>
 <table align="center">
