@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.RomeoDAO.ProductoDao;
+import com.google.gson.Gson;
 import com.romeo.model.Producto;
 
 /**
@@ -31,23 +33,9 @@ public class ServeletControler extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String action = request.getParameter("btn");
 		
-		EntityManager em;
-		EntityManagerFactory emf;
-		emf = Persistence.createEntityManagerFactory("INICIALIZANDO_JPA-HIBERNATE");
-		em = emf.createEntityManager();
 		Producto pr = new Producto();
-		try {
-		
+		ProductoDao prd = new ProductoDao();
 		String id = request.getParameter("id");
 		String nombrepr = request.getParameter("Nproductos");
 		String preciopr = request.getParameter("Pproductos");
@@ -62,44 +50,31 @@ public class ServeletControler extends HttpServlet {
 		pr.setCantidadProducto(Integer.parseInt(cantidadpr));
 		pr.setTotalProducto(Double.parseDouble(totalpr));
 		
-		
-		}catch (Exception e) {
-			
-		}
-		if(action.equals("agregar")) {
-			
-			
-			
-			em.getTransaction().begin();
-			em.persist(pr);
-			em.flush();
-			em.getTransaction().commit();
-			
-			
-			
-		}else if(action.equals("eliminar")) {
-			pr=em.getReference(Producto.class, pr.getId());
-			//pr.getId();
-			em.getTransaction().begin();
-			em.remove(pr);
-			em.flush();
-			em.getTransaction().commit();
-			
-			
-			
-			
-		}else if(action.equals("modificar")) {
-			//pr.getId();
-			em.getTransaction().begin();
-			em.merge(pr);
-			em.flush();
-			em.getTransaction().commit();
-			
-		}
-		
-		
+		prd.agregarDatos(pr);
 		
 		response.sendRedirect("index.jsp");
+		
+		
+		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ProductoDao prdao = new ProductoDao();
+		Gson json = new Gson();
+		try {
+			
+			response.getWriter().append(json.toJson(prdao.productoLista()));
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 
 }
