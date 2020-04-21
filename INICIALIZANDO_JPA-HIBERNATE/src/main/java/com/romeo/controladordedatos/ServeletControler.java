@@ -36,13 +36,35 @@ public class ServeletControler extends HttpServlet {
 		
 		Producto pr = new Producto();
 		ProductoDao prd = new ProductoDao();
-		String id = request.getParameter("id");
-		String nombrepr = request.getParameter("Nproductos");
-		String preciopr = request.getParameter("Pproductos");
-		String cantidadpr = request.getParameter("Cproductos");
-		String totalpr = request.getParameter("Tproductos");
+		
+		String id = null;
+		String nombrepr= null;
+		String preciopr = null ;
+		String cantidadpr = null;
+		String totalpr = null;
+		try {
+			id = request.getParameter("id");
+			nombrepr = request.getParameter("Nproductos");
+			preciopr = request.getParameter("Pproductos");
+			cantidadpr = request.getParameter("Cproductos");
+			totalpr = request.getParameter("Tproductos");
+			
+			pr.setId(Integer.parseInt(id));
+			pr.setNombreProducto(nombrepr);
+			pr.setPrecioProducto(Double.parseDouble(preciopr));
+			pr.setCantidadProducto(Integer.parseInt(cantidadpr));
+			pr.setTotalProducto(Double.parseDouble(totalpr));
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		
 		
+		String action = request.getParameter("btn");
+
+		if(action.equals("GUARDAR")) {
+			
 		
 		pr.setId(Integer.parseInt(id));
 		pr.setNombreProducto(nombrepr);
@@ -51,6 +73,22 @@ public class ServeletControler extends HttpServlet {
 		pr.setTotalProducto(Double.parseDouble(totalpr));
 		
 		prd.agregarDatos(pr);
+		}
+		else if(action.equals("ACTUALIZAR")) {
+			pr.setId(Integer.parseInt(id));
+			pr.setNombreProducto(nombrepr);
+			pr.setPrecioProducto(Double.parseDouble(preciopr));
+			pr.setCantidadProducto(Integer.parseInt(cantidadpr));
+			pr.setTotalProducto(Double.parseDouble(totalpr));
+			
+			prd.actualizarDatos(pr);
+		
+		}else if(action.equals("ELIMINAR")) {
+		    pr.setId(Integer.parseInt(id));
+		    prd.eliminarDatos(pr);
+			
+			
+		}
 		
 		response.sendRedirect("index.jsp");
 		

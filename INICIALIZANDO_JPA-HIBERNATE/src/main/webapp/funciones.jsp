@@ -14,7 +14,13 @@ String cantidadPr=request.getParameter("CantidadPr");
 String precioPr=request.getParameter("PrecioPr");
 String totalPr=request.getParameter("TotalPr");
 
-
+if(idBus==null){
+	idBus="";
+	nombrePr="";
+	cantidadPr="";
+	precioPr="";
+	totalPr="";
+}
 
 %>
 <body>
@@ -27,10 +33,10 @@ String totalPr=request.getParameter("TotalPr");
             <td>
                
                     <p>id</p><input type="text" name="Id" id="idcarga" value="<%=idBus %>>">
-                    <p>Nombre producto</p><input type="text" name="Nproductos">
-                    <p>Precio producto</p><input type="text" name="Pproductos">
-                    <p>Cantidad de producto</p><input type="text" name="Cproductos">
-                    <p>Total de producto</p><input type="text" name="Tproductos">
+                    <p>Nombre producto</p><input type="text" name="Nproductos" value="<%=nombrePr%>>">
+                    <p>Precio producto</p><input type="text" name="Pproductos" value="<%=precioPr%>>">
+                    <p>Cantidad de producto</p><input type="text" name="Cproductos" value="<%=cantidadPr %>>">
+                    <p>Total de producto</p><input type="text" name="Tproductos" value="<%=totalPr %>>">
                     <br>
                     <br>
                     
@@ -40,7 +46,8 @@ String totalPr=request.getParameter("TotalPr");
             
       </table>
       
-      <input type="submit" class="btn btn-info" value="GUARDAR">
+      <input type="submit" class="btn btn-info" value="GUARDAR" name="btn">
+      <input type="submit" class="btn btn-info" value="ACTUALIZAR" name="btn">
       </form>
 
 </body>
