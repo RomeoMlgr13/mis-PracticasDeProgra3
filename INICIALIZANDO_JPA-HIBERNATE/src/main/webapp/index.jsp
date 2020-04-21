@@ -29,7 +29,7 @@
                      <td>
                      <a href="" class="btn btn-warning">ELIMINAR</a>
                      <a href="" class="btn btn-danger">ACTUALIZAR </a> 
-                     <a href="" class="btn btn-danger">AGREGAR </a>
+                     
                      </td>
 
 
