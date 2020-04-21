@@ -7,8 +7,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<%
+String idBus=request.getParameter("idBus");
+String nombrePr=request.getParameter("Npr");
+String cantidadPr=request.getParameter("CantidadPr");
+String precioPr=request.getParameter("PrecioPr");
+String totalPr=request.getParameter("TotalPr");
+
+
+
+%>
 <body>
-    <h1>holamundo</h1>
+    
 <form action="ServeletControler">
 <table align="center">
     <thead></thead>
@@ -16,7 +26,7 @@
         <tr>
             <td>
                
-                    <p>id</p><input type="text" name="Id">
+                    <p>id</p><input type="text" name="Id" id="idcarga" value="<%=idBus %>>">
                     <p>Nombre producto</p><input type="text" name="Nproductos">
                     <p>Precio producto</p><input type="text" name="Pproductos">
                     <p>Cantidad de producto</p><input type="text" name="Cproductos">

@@ -26,17 +26,13 @@
                      <td>${item.precioProducto}</td>
                      <td>${item.cantidadProducto}</td>
                      <td>${item.totalProducto}</td>
+
                      <td>
-                     
-                     <a href="" class="btn btn-warning">ELIMINAR</a>
-                     <a href="" class="btn btn-danger">ACTUALIZAR </a> 
-                     
+                     <a href="" class="btn btn-warning">ELIMINAR </a>
+                     <a href="funciones.jsp?idBus=${item.id}&Npr=${item.nombreProducto}&PrecioPr=${item.precioProducto}&CantidadPr=${item.cantidadProducto}&TotalPr=${item.totalProducto}" class="btn btn-danger">ACTUALIZAR </a> 
+                   
                      </td>
-
-
                      
-
-
                      </tr>
                      
                      `
