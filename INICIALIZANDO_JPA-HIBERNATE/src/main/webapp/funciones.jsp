@@ -33,10 +33,10 @@ if(idBus==null){
             <td>
                
                     <p>id</p><input type="text" name="Id" id="idcarga" value="<%=idBus %>>">
-                    <p>Nombre producto</p><input type="text" name="Nproductos" value="<%=nombrePr%>>">
-                    <p>Precio producto</p><input type="text" name="Pproductos" value="<%=precioPr%>>">
-                    <p>Cantidad de producto</p><input type="text" name="Cproductos" value="<%=cantidadPr %>>">
-                    <p>Total de producto</p><input type="text" name="Tproductos" value="<%=totalPr %>>">
+                    <p>Nombre producto</p><input type="text" name="Nproductos" id="NPro" value="<%=nombrePr%>>">
+                    <p>Precio producto</p><input type="text" name="Pproductos" id="PPro" value="<%=precioPr%>>">
+                    <p>Cantidad de producto</p><input type="text" name="Cproductos" id="CPro" value="<%=cantidadPr %>>">
+                    <p>Total de producto</p><input type="text" name="Tproductos"id="TPro" value="<%=totalPr %>>">
                     <br>
                     <br>
                     
@@ -49,6 +49,30 @@ if(idBus==null){
       <input type="submit" class="btn btn-info" value="GUARDAR" name="btn">
       <input type="submit" class="btn btn-info" value="ACTUALIZAR" name="btn">
       </form>
+      <script type="text/javascript">
+      var caja2 = document.getElementById('CPro');
+
+    caja2.addEventListener('keyup', function(){
+        var valordato1 = document.getElementById('PPro').value;
+        var valordato2 = document.getElementById('CPro').value;
+        var operacion = Number (valordato1) * Number (valordato2);
+
+        document.getElementById('lblresultado').innerHTML = operacion;
+
+        document.getElementById('TPro').value = operacion;
+
+        //console.log(operacion);
+
+    });
+    
+    </script>
+      
+      
+      
+      
+      
+      
+      
 
 </body>
 </html>

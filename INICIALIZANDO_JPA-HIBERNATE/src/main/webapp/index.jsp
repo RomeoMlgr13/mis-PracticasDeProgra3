@@ -30,7 +30,7 @@
                      <td>
                      <a href="ServeletControler?btn=ELIMINAR&id=${item.id}" class="btn btn-warning">ELIMINAR </a>
                      <a href="funciones.jsp?idBus=${item.id}&Npr=${item.nombreProducto}&PrecioPr=${item.precioProducto}&CantidadPr=${item.cantidadProducto}&TotalPr=${item.totalProducto}" class="btn btn-danger">ACTUALIZAR </a> 
-                   
+                     <a href="ServeletControler?btn=AGREGARVENTA&id=${item.id}" class="btn btn-warning">AGREGAR VENTA </a>
                      </td>
                      
                      </tr>

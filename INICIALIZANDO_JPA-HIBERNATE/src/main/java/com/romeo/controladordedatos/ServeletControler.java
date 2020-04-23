@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.RomeoDAO.ProductoDao;
+import com.RomeoDAO.VentaDao;
 import com.google.gson.Gson;
 import com.romeo.model.Producto;
+import com.romeo.model.TbVenta;
 
 /**
  * Servlet implementation class ServeletControler
@@ -80,7 +82,6 @@ public class ServeletControler extends HttpServlet {
 			pr.setPrecioProducto(Double.parseDouble(preciopr));
 			pr.setCantidadProducto(Integer.parseInt(cantidadpr));
 			pr.setTotalProducto(Double.parseDouble(totalpr));
-			
 			prd.actualizarDatos(pr);
 		
 		}else if(action.equals("ELIMINAR")) {
@@ -89,7 +90,20 @@ public class ServeletControler extends HttpServlet {
 			
 			
 		}
-		
+		else if(action.equals("AGREGARVENTA")) {
+			TbVenta tbv = new TbVenta();
+			VentaDao vdao = new VentaDao();
+			
+			
+			Producto prn = new Producto();
+			
+			
+			//tbv.setId(Integer.parseInt(id));
+			prn.setId(Integer.parseInt(id));
+			tbv.setProducto(prn);
+			vdao.agregarDatos(tbv);
+			
+		}
 		response.sendRedirect("index.jsp");
 		
 		
